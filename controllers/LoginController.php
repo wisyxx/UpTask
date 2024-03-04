@@ -12,7 +12,9 @@ class LoginController
             
         }
 
-        $rotuer->render('auth/login', []);
+        $rotuer->render('auth/login', [
+            'title' => 'Login'
+        ]);
     }
     public static function logout(Router $rotuer)
     {
@@ -27,14 +29,18 @@ class LoginController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
-        $rotuer->render('auth/login', []);
+        $rotuer->render('auth/register', [
+            'title' => 'Create account'
+        ]);
     }
     public static function forgotPassword(Router $rotuer)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
-        $rotuer->render('auth/login', []);
+        $rotuer->render('auth/reset-passwd', [
+            'title' => 'Reset password'
+        ]);
     }
     public static function message(Router $rotuer)
     {

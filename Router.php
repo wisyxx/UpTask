@@ -49,7 +49,7 @@ class Router
 
         // include the view
         include_once __DIR__ . "/views/$view.php";
-        $contenido = ob_get_clean(); // Clean buffer and get what was on it
+        $content = ob_get_clean(); // Clean buffer and get what was on it
         include_once __DIR__ . '/views/layout.php';
     }
 }

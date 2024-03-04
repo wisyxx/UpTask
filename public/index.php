@@ -7,8 +7,8 @@ use MVC\Router;
 $router = new Router();
 
 /*======> ACCOUNTS <======*/
-$router->get('/login', [LoginController::class, 'login']);
-$router->post('/login', [LoginController::class, 'login']);
+$router->get('/', [LoginController::class, 'login']);
+$router->post('/', [LoginController::class, 'login']);
 $router->get('/register', [LoginController::class, 'register']);
 $router->post('/register', [LoginController::class, 'register']);
 $router->get('/logout', [LoginController::class, 'logout']);

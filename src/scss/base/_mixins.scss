@@ -1,8 +1,8 @@
 @use 'base/variables' as v;
 
 /** Media Queries **/
-@mixin telefono {
-    @media (min-width: v.$telefono) {
+@mixin movile {
+    @media (min-width: v.$movile) {
         @content;
     }
 }
@@ -18,7 +18,7 @@
 }
 
 
-@mixin boton($bgColor, $colorTexto) {
+@mixin button($bgColor, $colorTexto) {
     background-color: $bgColor;
     padding: 1.5rem 4rem;
     color: $colorTexto;
