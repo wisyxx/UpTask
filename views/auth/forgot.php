@@ -4,7 +4,7 @@
     ?>
 
     <div class="container-sm">
-        <p class="page-description">Reset your password</p>
+        <p class="page-description">Recover your access to UpTask</p>
 
         <form action="/forgot" method="post" class="form">
             <div class="field">

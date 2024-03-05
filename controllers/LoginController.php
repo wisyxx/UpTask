@@ -54,11 +54,13 @@ class LoginController
     public static function message(Router $rotuer)
     {
 
-        $rotuer->render('auth/login', []);
+        $rotuer->render('auth/message', []);
     }
     public static function confirmAccount(Router $rotuer)
     {
         
-        $rotuer->render('auth/login', []);
+        $rotuer->render('auth/confirm', [
+            'title' => "Verify account"
+        ]);
     }
 }

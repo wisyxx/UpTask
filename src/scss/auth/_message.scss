@@ -1,0 +1,9 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.message {
+    padding-top: v.$spacing;
+    .uptask {
+        @include m.gradientTextHeading(v.$orange, 10rem, 7rem);
+    }
+}
