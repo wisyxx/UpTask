@@ -39,6 +39,15 @@ class LoginController
         }
 
         $rotuer->render('auth/forgot', [
+            'title' => 'Forgot password'
+        ]);
+    }
+    public static function resetPassword(Router $rotuer)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        }
+
+        $rotuer->render('auth/reset', [
             'title' => 'Reset password'
         ]);
     }

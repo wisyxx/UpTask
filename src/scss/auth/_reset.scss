@@ -1,0 +1,20 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.reset {
+  padding-top: v.$spacing;
+
+  .uptask {
+    @include m.gradientTextHeading(v.$cyan, 10rem, 7rem);
+  }
+
+  input[type='submit'] {
+    @include m.button(v.$cyan, v.$white);
+  }
+
+  .actions {
+    a {
+      color: v.$cyan;
+    }
+  }
+}

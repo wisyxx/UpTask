@@ -14,6 +14,8 @@ $router->post('/register', [LoginController::class, 'register']);
 $router->get('/logout', [LoginController::class, 'logout']);
 $router->get('/forgot', [LoginController::class, 'forgotPassword']);
 $router->post('/forgot', [LoginController::class, 'forgotPassword']);
+$router->get('/reset', [LoginController::class, 'resetPassword']);
+$router->post('/reset', [LoginController::class, 'resetPassword']);
 /* Messages & account confirmation */
 $router->get('/message', [LoginController::class, 'message']);
 $router->get('/confirm', [LoginController::class, 'confirmAccount']);
