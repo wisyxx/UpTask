@@ -1,6 +1,7 @@
 <div class="container login">
-    <h1 class="uptask">Up Task</h1>
-    <p class="tagline">Create & manage your projects</p>
+    <?php
+    include_once __DIR__ . '/../templates/site.php';
+    ?>
 
     <div class="container-sm">
         <p class="page-description">Login</p>
