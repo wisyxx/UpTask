@@ -17,10 +17,10 @@
   }
 }
 
-@mixin button($bgColor, $colorTexto) {
+@mixin button($bgColor, $textColor) {
   background-color: $bgColor;
   padding: 1.5rem 4rem;
-  color: $colorTexto;
+  color: $textColor;
   font-size: 1.6rem;
   display: inline-block;
   font-weight: 700;

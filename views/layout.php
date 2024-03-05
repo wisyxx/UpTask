@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UpTask
         <?php
-        $pageTitle = $title;
-        echo " | $pageTitle" ?? '';
+        // $title comes from the controller, if there's no title defined, $pageTitle = ''
+        $pageTitle = $title ?? ''; 
+
+        // If there's no title from the controller, print '' else print the title
+        echo $pageTitle === '' ? '' : " | $pageTitle";
         ?>
     </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">

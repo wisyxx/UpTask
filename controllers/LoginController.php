@@ -9,7 +9,6 @@ class LoginController
     public static function login(Router $rotuer)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
         }
 
         $rotuer->render('auth/login', [
@@ -58,9 +57,7 @@ class LoginController
     }
     public static function confirmAccount(Router $rotuer)
     {
-        
-        $rotuer->render('auth/confirm', [
-            'title' => "Verify account"
-        ]);
+
+        $rotuer->render('auth/confirm', []);
     }
 }
