@@ -8,7 +8,7 @@
 
         <form action="/" method="post" class="form">
             <div class="field">
-                <label for="mail">Email</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Your email" value="<?php ?>">
             </div>
             <div class="field">

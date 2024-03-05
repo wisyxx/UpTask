@@ -1,20 +1,20 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-.login {
+.forgot {
   padding-top: v.$spacing;
 
   .uptask {
-    @include m.gradientTextHeading(v.$cyan, 10rem, 7rem);
+    @include m.gradientTextHeading(v.$pink, 10rem, 7rem);
   }
 
   input[type='submit'] {
-    @include m.button(v.$cyan, v.$white);
+    @include m.button(v.$pink, v.$white);
   }
 
   .actions {
     a {
-      color: v.$cyan;
+      color: v.$pink;
     }
   }
 }

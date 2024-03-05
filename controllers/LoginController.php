@@ -38,7 +38,7 @@ class LoginController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
-        $rotuer->render('auth/reset-passwd', [
+        $rotuer->render('auth/forgot', [
             'title' => 'Reset password'
         ]);
     }
