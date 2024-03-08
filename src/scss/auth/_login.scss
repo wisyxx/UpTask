@@ -2,7 +2,7 @@
 @use '../base/mixins' as m;
 
 .login {
-  padding-top: v.$spacing;
+  padding: v.$spacing 0;
 
   .uptask {
     @include m.gradientTextHeading(v.$cyan, 10rem, 7rem);

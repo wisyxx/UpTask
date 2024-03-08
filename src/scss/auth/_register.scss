@@ -2,7 +2,7 @@
 @use '../base/mixins' as m;
 
 .create {
-  padding-top: v.$spacing;
+  padding: v.$spacing 0;
 
   .uptask {
     @include m.gradientTextHeading(v.$purple, 10rem, 7rem);

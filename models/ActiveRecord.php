@@ -15,7 +15,7 @@ class ActiveRecord {
         self::$db = $database;
     }
 
-    public static function setAlerts($type, $message) {
+    public static function setAlert($type, $message) {
         static::$alerts[$type][] = $message;
     }
     // Validación

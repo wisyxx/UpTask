@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\User;
 use MVC\Router;
 
 class LoginController
@@ -25,11 +26,28 @@ class LoginController
     }
     public static function register(Router $rotuer)
     {
+        $user = new User;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user->sync($_POST);
+
+            $alerts = $user->validateNewAccount();
+
+            $userExists = User::where('email', $user->email);
+
+            if ($userExists) {
+                User::setAlert('error', 'It seems like the user already has an account');
+                $alerts = User::getAlerts();
+            } else {
+                
+            }
         }
 
+        $alerts = User::getAlerts();
         $rotuer->render('auth/register', [
-            'title' => 'Create account'
+            'title' => 'Create account',
+            'user' => $user,
+            'alerts' => $alerts
         ]);
     }
     public static function forgotPassword(Router $rotuer)
