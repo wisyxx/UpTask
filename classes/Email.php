@@ -39,7 +39,7 @@ class Email
         $content = '<html>';
         $content .= "<p><strong>Hello, " . $this->name . "</strong><br>To finish the account 
         creation process verify your account clicking the following link</p>";
-        $content .= "<p><a href='http://localhost:3000/verify?token=" .
+        $content .= "<p><a href='http://localhost:3000/confirm?token=" .
             $this->token . "'>Verify account</a></p>";
         $content .= "If this wasn't you just ignore the message";
         $content .= '</html>';

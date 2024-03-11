@@ -50,7 +50,7 @@ class LoginController
 
                     $email = new Email($user->email, $user->name, $user->token);
                     $email->sendConfirmation();
-                    
+
                     if ($result) {
                         header("Location: /message");
                     }
@@ -90,7 +90,27 @@ class LoginController
     }
     public static function confirmAccount(Router $rotuer)
     {
+        $token = s($_GET['token']);
 
-        $rotuer->render('auth/confirm', []);
+        if (!$token) header('Location: /');
+
+        $user = User::where('token', $token);
+
+        if (empty($user)) {
+            User::setAlert('error', 'Invalid token!');
+        } else {
+            // Confirm account
+            $user->verified = 1;
+            $user->token = '';
+            unset($user->password1); // Delete atribute "password1"
+            $user->save();
+
+            User::setAlert('succes', 'Account verified!');
+        }
+
+        $alerts = User::getAlerts();
+        $rotuer->render('auth/confirm', [
+            'alerts' => $alerts
+        ]);
     }
 }
