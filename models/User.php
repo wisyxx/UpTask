@@ -37,7 +37,7 @@ class User extends ActiveRecord
         if (!$this->password) {
             self::$alerts['error'][] = 'You must write a valid password';
         }
-        if (strlen($this->password)) {
+        if (strlen($this->password) < 8) {
             self::$alerts['error'][] = 'The password must have at least 8 characters';
         }
         if ($this->password !== $this->password1) {
@@ -45,5 +45,13 @@ class User extends ActiveRecord
         }
 
         return self::$alerts;
+    }
+    public function hashPasword()
+    {
+        $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+    }
+    public function generateToken()
+    {
+        $this->token = uniqid();
     }
 }

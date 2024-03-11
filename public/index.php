@@ -18,7 +18,7 @@ $router->get('/reset', [LoginController::class, 'resetPassword']);
 $router->post('/reset', [LoginController::class, 'resetPassword']);
 /* Messages & account confirmation */
 $router->get('/message', [LoginController::class, 'message']);
-$router->get('/confirm', [LoginController::class, 'confirmAccount']);
+$router->get('/verify', [LoginController::class, 'confirmAccount']);
 
 
 $router->checkRoutes();

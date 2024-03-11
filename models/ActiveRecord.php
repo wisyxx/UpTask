@@ -60,7 +60,7 @@ class ActiveRecord {
     }
 
     public static function where($column, $value) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE $column = '$value'";
+        $query = "SELECT * FROM " . static::$table . " WHERE $column = '$value'";
         $result = self::queryDB($query);
         return array_shift( $result ) ;
     }
@@ -78,7 +78,7 @@ class ActiveRecord {
         $atributes = $this->sanitizeAtributes();
         
         // Insert in db
-        $query = " INSERT INTO " . static::$tabla . " ( ";
+        $query = " INSERT INTO " . static::$table . " ( ";
         $query .= join(', ', array_keys($atributes));
         $query .= " ) VALUES (' "; 
         $query .= join("', '", array_values($atributes));

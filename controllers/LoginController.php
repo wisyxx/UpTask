@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Classes\Email;
 use Model\User;
 use MVC\Router;
 
@@ -33,13 +34,27 @@ class LoginController
 
             $alerts = $user->validateNewAccount();
 
-            $userExists = User::where('email', $user->email);
+            if (empty($alerts)) {
 
-            if ($userExists) {
-                User::setAlert('error', 'It seems like the user already has an account');
-                $alerts = User::getAlerts();
-            } else {
-                
+                $userExists = User::where('email', $user->email);
+
+                if ($userExists) {
+                    User::setAlert('error', 'It seems like the user already has an account');
+                    $alerts = User::getAlerts();
+                } else {
+                    $user->hashPasword();
+                    unset($user->password1); // Delete atribute "password1"
+                    $user->generateToken();
+                    $user->verified = 0; // Set verified status to not verified
+                    $result = $user->save();
+
+                    $email = new Email($user->email, $user->name, $user->token);
+                    $email->sendConfirmation();
+                    
+                    if ($result) {
+                        header("Location: /message");
+                    }
+                }
             }
         }
 
