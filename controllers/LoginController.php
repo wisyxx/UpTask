@@ -68,15 +68,38 @@ class LoginController
     public static function forgotPassword(Router $rotuer)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = new User($_POST);
+            $alerts = $user->validateEmail();
+            
+            if (empty($alerts)) {
+                $user = $user::where('email', $user->email);
+
+                if ($user && $user->verified) {
+                    $user->generateToken();
+                    unset($user->password1);
+                    $user->save();
+
+                    $email = new Email($user->email, $user->name, $user->token);
+                    $email->sendPasswordResetInstructions();
+                    User::setAlert('succes', 'We\'ve sent the instructions, check your inbox!');
+                } else {
+                    User::setAlert('error', 'The user does not exist or is not verified');
+                }
+            }
         }
 
+        $alerts = User::getAlerts();
         $rotuer->render('auth/forgot', [
-            'title' => 'Forgot password'
+            'title' => 'Forgot password',
+            'alerts' => $alerts
         ]);
     }
     public static function resetPassword(Router $rotuer)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = new User($_POST);
+
+            $user->validateEmail();
         }
 
         $rotuer->render('auth/reset', [

@@ -54,4 +54,14 @@ class User extends ActiveRecord
     {
         $this->token = uniqid();
     }
+    public function validateEmail()
+    {
+        if (!$this->email) {
+            self::$alerts['error'][] = 'You must write your email';
+        }
+        if ($this->email && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alerts['error'][] = 'Invalid email';
+        }
+        return self::$alerts;
+    }
 }

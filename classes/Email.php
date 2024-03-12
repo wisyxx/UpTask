@@ -47,4 +47,32 @@ class Email
         $mail->Body = $content;
         $mail->send();
     }
+    public function sendPasswordResetInstructions()
+    {
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Port = 2525;
+        $mail->Username = '35ba6cecf041f5';
+        $mail->Password = 'e592a46b44fab9';
+
+        $mail->setFrom('accounts@uptask.com');
+        $mail->addAddress('accounts@uptask.com', 'uptask.com');
+
+        $mail->Subject = 'Reset your password';
+
+        $mail->isHTML();
+        $mail->CharSet = 'UTF-8';
+
+        $content = '<html>';
+        $content .= "<p><strong>Hello, " . $this->name . "</strong><br>To finish the password reset process click the following link</p>";
+        $content .= "<p><a href='http://localhost:3000/reset?token=" .
+        $this->token . "'>Reset password</a></p>";
+        $content .= "If this wasn't you just ignore the message";
+        $content .= '</html>';
+
+        $mail->Body = $content;
+        $mail->send();
+    }
 }
